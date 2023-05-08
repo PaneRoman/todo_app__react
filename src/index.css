@@ -1,13 +1,113 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+body, h1, ul, li, label, input {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+  .container h1{
+    font-size: 46px;
+    font-weight: 500;
+    margin-top: 50px;
+    margin-bottom: 18px;
+  }
+
+.input-field {
+  position: relative;
+  margin-bottom: 35px;
+}
+
+  .input-field input{
+    width: 100%;
+    height: 50px;
+    border: none;
+    border-bottom: 1px solid rgb(181, 181, 181);
+    outline: 0;
+    
+  }
+
+  .input-field label {
+    position: absolute;
+    left: 0;
+    top: 18px;
+    font-size: 16px;
+    font-weight: 400;
+    color: rgb(181, 181, 181);
+    transition: all 0.3s ease-in-out;
+    pointer-events: none;
+  }
+
+.input-field.active label{
+  top: -8px;
+  font-size: 12px;
+  color: #09caff;
+  transition: all 0.3s ease-in-out;
+}
+
+.input-field.active input{
+  border-bottom: 1px solid #09caff;
+}
+
+.todo-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.todo {
+  margin-bottom: 1rem;
+}
+
+.todo span{
+  color: rgb(129, 129, 129);
+}
+
+.todo.completed span {
+  text-decoration: line-through;
+}
+
+.todo label {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  background: #f3f3f3;
+  padding: 1rem;
+}
+
+.todo label .wrapper {
+  display: flex;
+  gap: 20px;
+}
+
+.todo label input {
+  accent-color: rgb(143, 238, 130);
+}
+
+.todo button {
+  background-color: white;
+  color: red;
+  cursor: pointer;
+  border: 1px solid red;
+  border-radius: 2px;
+  padding: 2px 7px;
+  line-height: 18px;
+}
+
+.todo button:hover {
+  background-color: red;
+  color: white;
+  border: 1px solid transparent;
+  transition: all 0.2s ease-in-out;
+}
+
+.todo i {
+  z-index: 2;
 }

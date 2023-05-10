@@ -10,7 +10,7 @@ export default function TodoItem({title, id, completed, removeTodo, toggleTodo})
     const cls = completed ? 'completed' : null;
     
     return(
-        <li className={`todo ${cls}`}>
+        <li className={`todo-item ${cls}`}>
             <label>
                 <div className="wrapper">
                     <input 

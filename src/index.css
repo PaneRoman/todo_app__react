@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
-body, h1, ul, li, label, input {
+body, p, h1, ul, li, label, input {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -24,7 +24,7 @@ body, h1, ul, li, label, input {
   margin-bottom: 35px;
 }
 
-  .input-field input{
+  .input-field input {
     width: 100%;
     height: 50px;
     border: none;
@@ -32,6 +32,23 @@ body, h1, ul, li, label, input {
     outline: 0;
     
   }
+
+  .input-field .add-button {
+    position: absolute;
+    right: 0;
+    top: 10px;
+    border: none;
+
+    background: transparent url('./img/add-icon.svg') no-repeat center center;
+    cursor: pointer;
+    width: 30px;
+      height: 30px;
+  }
+
+    .input-field .add-button img {
+      width: 30px;
+      height: 30px;
+    }
 
   .input-field label {
     position: absolute;
@@ -60,38 +77,43 @@ body, h1, ul, li, label, input {
   padding-left: 0;
 }
 
-.todo {
+  /* .todo-list .no-todos-text {
+
+  } */
+
+.todo-item {
   margin-bottom: 1rem;
 }
 
-.todo span{
+.todo-item span{
   color: rgb(129, 129, 129);
 }
 
-.todo.completed span {
+.todo-item.completed span {
   text-decoration: line-through;
 }
 
-.todo label {
+.todo-item label {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
   background: #f3f3f3;
+  border-radius: 2px;
   padding: 1rem;
 }
 
-.todo label .wrapper {
+.todo-item label .wrapper {
   display: flex;
   gap: 20px;
 }
 
-.todo label input {
+.todo-item label input {
   accent-color: rgb(143, 238, 130);
 }
 
-.todo button {
+.todo-item button {
   background-color: white;
   color: red;
   cursor: pointer;
@@ -101,13 +123,13 @@ body, h1, ul, li, label, input {
   line-height: 18px;
 }
 
-.todo button:hover {
+.todo-item button:hover {
   background-color: red;
   color: white;
   border: 1px solid transparent;
   transition: all 0.2s ease-in-out;
 }
 
-.todo i {
+.todo-item i {
   z-index: 2;
 }

@@ -4,6 +4,10 @@ export default function TodoList({todos, removeTodo, toggleTodo}) {
 
     return (
         <ul className='todo-list'>
+            {todos.length <= 0 && (
+                <p className='no-todos-text'>No one Todos added</p>
+            )}
+            
             {todos.map(todo => {
                     return <TodoItem 
                         key={todo.id}

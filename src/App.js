@@ -11,8 +11,8 @@ import './App.css';
   const local = JSON.parse(localStorage.getItem('todos'));
 
   const[todos, setTodos] = useState(local || [])
-  const[todoTitle, setTodoTitle] = useState('')
-  // const[isActive, setIsActive] = useState(false)
+  // const[todoTitle, setTodoTitle] = useState('');
+  // const[isActive, setIsActive] = useState(false);
 
   // useEffect(() => {
   //   console.log('useEffect1>>');
@@ -28,15 +28,22 @@ import './App.css';
   }, [todos])
 
 
-  const addTodo = (event) => {
-    if (event.key === 'Enter') {
-      setTodos([
-        ...todos,
-        {id: Date.now(), title: todoTitle, completed: false}
-      ])
+  const addTodo = (title) => {
+    // console.log(event);
 
-      setTodoTitle('');
-    }
+    // if (event.key === 'Enter') {
+    //   setTodos([
+    //     ...todos,
+    //     {id: Date.now(), title: todoTitle, completed: false}
+    //   ])
+
+    // }
+
+    setTodos([
+      ...todos,
+      {id: Date.now(), title: title, completed: false}
+    ])
+
   }
 
   const removeTodo = (id) => {
@@ -61,8 +68,8 @@ import './App.css';
         <h1>Simple Todo App</h1>
 
         <TodoInput 
-          todoTitle={todoTitle} 
-          setTodoTitle={setTodoTitle}
+          // todoTitle={todoTitle} 
+          // setTodoTitle={setTodoTitle}
           addTodo={addTodo} />
 
         {/* <div className={`input-field ${cls}`}>

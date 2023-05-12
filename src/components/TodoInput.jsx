@@ -16,7 +16,7 @@ export default function TodoInput({addTodo}) {
             value={todoTitle}
             onChange={(event) => setTodoTitle(event.target.value)}
             // onKeyDown={addTodo}
-            onKeyDown={(event) =>{
+            onKeyDown={(event) => {
               if (event.key === 'Enter') {
                 addTodo(todoTitle);
                 setTodoTitle('');

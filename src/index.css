@@ -42,12 +42,12 @@ body, p, h1, ul, li, label, input {
     background: transparent url('./img/add-icon.svg') no-repeat center center;
     cursor: pointer;
     width: 30px;
-      height: 30px;
+    height: 30px;
+    transition: opacity 0.2s;
   }
 
-    .input-field .add-button img {
-      width: 30px;
-      height: 30px;
+    .input-field .add-button:hover {
+      opacity: 0.7;
     }
 
   .input-field label {
@@ -109,26 +109,56 @@ body, p, h1, ul, li, label, input {
   gap: 20px;
 }
 
-.todo-item label input {
+.todo-item label .todo-item-checkbox {
+  width: 20px;
+  height: 20px;
+  /* border: 1px solid #3F72AF;
+  border-radius: 2px; */
   accent-color: rgb(143, 238, 130);
 }
 
 .todo-item button {
-  background-color: white;
-  color: red;
+  /* background-color: white; */
+  /* color: red; */
   cursor: pointer;
-  border: 1px solid red;
-  border-radius: 2px;
+  border: none;
+  /* border-radius: 2px; */
   padding: 2px 7px;
+  margin-right: 5px;
   line-height: 18px;
+
+  
+  width: 30px;
+  height: 30px;
+  transition: opacity 0.2s;
 }
 
 .todo-item button:hover {
+  opacity: 0.7;
+}
+
+  .todo-item .del-button {
+    background: transparent url('./img/x-square-icon.svg') no-repeat center center;
+  }
+
+  .todo-item .edit-button {
+    background: transparent url('./img/edit-icon.svg') no-repeat center center;
+  }
+
+  .todo-item .return-button {
+    background: transparent url('./img/return-icon.svg') no-repeat center center;
+  }
+
+  .todo-item .done-button {
+    background: transparent url('./img/tick-icon.svg') no-repeat center center;
+  }
+
+/* .todo-item button:hover {
   background-color: red;
   color: white;
   border: 1px solid transparent;
   transition: all 0.2s ease-in-out;
-}
+} */
 
 .todo-item i {
   z-index: 2;

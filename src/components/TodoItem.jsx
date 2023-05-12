@@ -4,6 +4,8 @@ export default function TodoItem({title, id, completed, removeTodo, toggleTodo})
 
     // console.log('completed >>>', completed);
 
+    const [isEdit, setIsEdit] = useState(false);
+    const [value, setValue] = useState(title)
     // const[checked, setCheked] = useState(false);
     // const cls = checked ? 'completed' : null;
 
@@ -13,20 +15,47 @@ export default function TodoItem({title, id, completed, removeTodo, toggleTodo})
         <li className={`todo-item ${cls}`}>
             <label>
                 <div className="wrapper">
-                    <input 
-                    type="checkbox"
-                    defaultChecked={completed}
-                    // checked={checked}
-                    onChange={() => {
+                    <input
+                        className="todo-item-checkbox"
+                        type="checkbox"
+                        defaultChecked={completed}
+                        // checked={checked}
+                        onChange={() => {
                         // setCheked(!checked);
-                        toggleTodo(id);
+                        toggleTodo();
                     }} />
 
-                    <span>{title}</span>
+                    {isEdit ? (
+                        <input 
+                            className="todo-item-input-field"
+                            type="text"
+                            value={value}
+                            onChange={(event) => setValue(event.target.value)}/>
+                    ) : (
+                        <span>{title}</span>
+                    )}
+                    
                 </div>
                 
+                <div className="button-wrapper">
+                    {isEdit ? (
+                        <button className="done-button" onClick={() => {}}></button>
+                    ) : (
+                        <button 
+                            className="edit-button" 
+                            onClick={() => {
+                            setIsEdit(!isEdit);
+                            }}>
+                        </button>
+                    )}
 
-                <button onClick={removeTodo}>Del</button>
+                    {isEdit ? (
+                        <button className="return-button" onClick={() => {}}></button>
+                    ) : (
+                        <button className="del-button" onClick={removeTodo}></button>
+                    )}
+                </div>
+                
             </label>
         </li>
     )

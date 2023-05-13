@@ -1,13 +1,21 @@
-import { useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 
-export default function TodoItem({title, id, completed, removeTodo, toggleTodo}) {
+export default function TodoItem({title, id, completed, removeTodo, toggleTodo, editTodo}) {
 
     // console.log('completed >>>', completed);
 
     const [isEdit, setIsEdit] = useState(false);
-    const [value, setValue] = useState(title)
+    const [inputValue, setinputValue] = useState(title)
+
+    const inputRef = useRef(null);
     // const[checked, setCheked] = useState(false);
     // const cls = checked ? 'completed' : null;
+
+    useLayoutEffect(() => {
+        if (isEdit && inputRef) {
+            inputRef.current.focus();
+        }
+    }, [isEdit])
 
     const cls = completed ? 'completed' : null;
     
@@ -27,10 +35,11 @@ export default function TodoItem({title, id, completed, removeTodo, toggleTodo})
 
                     {isEdit ? (
                         <input 
-                            className="todo-item-input-field"
+                            className="todo-item-edit-input"
+                            ref={inputRef}
                             type="text"
-                            value={value}
-                            onChange={(event) => setValue(event.target.value)}/>
+                            value={inputValue}
+                            onChange={(event) => setinputValue(event.target.value)}/>
                     ) : (
                         <span>{title}</span>
                     )}
@@ -39,18 +48,34 @@ export default function TodoItem({title, id, completed, removeTodo, toggleTodo})
                 
                 <div className="button-wrapper">
                     {isEdit ? (
-                        <button className="done-button" onClick={() => {}}></button>
+                        <button 
+                            className="done-button" 
+                            onClick={() => {
+                                if (inputValue === title) {
+                                    setIsEdit(!isEdit)
+                                } else {
+                                    editTodo(inputValue);
+                                    setIsEdit(!isEdit);
+                                }
+                            }}>
+                        </button>
                     ) : (
                         <button 
                             className="edit-button" 
                             onClick={() => {
-                            setIsEdit(!isEdit);
+                                setIsEdit(!isEdit);
                             }}>
                         </button>
                     )}
 
                     {isEdit ? (
-                        <button className="return-button" onClick={() => {}}></button>
+                        <button 
+                            className="return-button" 
+                            onClick={() => {
+                                setinputValue(title);
+                                setIsEdit(!isEdit);
+                            }}>
+                        </button>
                     ) : (
                         <button className="del-button" onClick={removeTodo}></button>
                     )}

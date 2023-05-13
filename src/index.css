@@ -12,11 +12,15 @@ body, p, h1, ul, li, label, input {
   margin: 0 auto;
 }
 
-  .container h1{
+  .container .app-header{
     font-size: 46px;
     font-weight: 500;
     margin-top: 50px;
     margin-bottom: 18px;
+  }
+
+  .container .app-header sup {
+    font-size: 18px;
   }
 
 .input-field {
@@ -115,6 +119,13 @@ body, p, h1, ul, li, label, input {
   /* border: 1px solid #3F72AF;
   border-radius: 2px; */
   accent-color: rgb(143, 238, 130);
+}
+
+.todo-item label .todo-item-edit-input {
+  font-size: 16px;
+  border: none;
+  border-radius: 2px;
+  width: 300px;
 }
 
 .todo-item button {

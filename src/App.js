@@ -59,13 +59,20 @@ import './App.css';
     console.log('refreshTodos >>>', refreshTodos);
     setTodos(refreshTodos);
   }
+
+  const editTodo = (id, title) => {
+    const refreshTodos = todos.map(todo => todo.id === id ? {...todo, title: title} : {...todo})
+
+    console.log('refreshTodos >>>', refreshTodos);
+    setTodos(refreshTodos);
+  }
   
 
   // const cls = isActive ? 'active' : null;
 
   return(
       <div className="container">
-        <h1>Simple Todo App</h1>
+        <h1 className='app-header'>Simple_Todo_App<sup> react.js</sup></h1>
 
         <TodoInput 
           // todoTitle={todoTitle} 
@@ -85,7 +92,7 @@ import './App.css';
           <label>Todo name</label>
         </div> */}
 
-        <TodoList todos={todos} removeTodo={removeTodo} toggleTodo={toggleTodo}/>
+        <TodoList todos={todos} removeTodo={removeTodo} toggleTodo={toggleTodo} editTodo={editTodo}/>
       </div>
     );
   }

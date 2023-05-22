@@ -1,15 +1,17 @@
-import { useState } from "react";
+import { useState, memo } from "react";
 
 // import addIcon from '../img/add-icon.svg';
 
-export default function TodoInput({addTodo}) {
+const TodoInput = memo(({addTodo}) => {
 
-    const[isActive, setIsActive] = useState(false);
-    const[todoTitle, setTodoTitle] = useState('');
+  console.log('render TodoInput')
 
-    const cls = isActive ? 'active' : null;
+  const[isActive, setIsActive] = useState(false);
+  const[todoTitle, setTodoTitle] = useState('');
 
-    return (
+  const cls = isActive ? 'active' : null;
+
+  return (
         <div className={`input-field ${cls}`}>
           <input 
             type="text"
@@ -20,10 +22,14 @@ export default function TodoInput({addTodo}) {
               if (event.key === 'Enter') {
                 addTodo(todoTitle);
                 setTodoTitle('');
+                setIsActive(false)
               }
             }}
             onFocus={() => setIsActive(true)}
-            onBlur={() => setIsActive(false)}
+            onBlur={() => {
+              if (!todoTitle) {
+                setIsActive(false)}}
+              }
             />
 
           <label>Todo name</label>
@@ -33,10 +39,16 @@ export default function TodoInput({addTodo}) {
             onClick={() => {
               addTodo(todoTitle);
               setTodoTitle('');
+              setIsActive(false)
             }} >
 
-            {/* <img src={addIcon} alt="addIcon"/> */}
+            {/* <img 
+              src={addIcon} 
+              alt="addIcon"
+              /> */}
           </button>
         </div>
-    );
-}
+  );
+});
+
+export default TodoInput;

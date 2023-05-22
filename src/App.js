@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 
 import TodoList from './components/TodoList';
 import TodoInput from './components/TodoInput';
@@ -28,8 +28,9 @@ import './App.css';
   }, [todos])
 
 
-  const addTodo = (title) => {
-    // console.log(event);
+  const addTodo = useCallback((title) => {
+
+    // console.log(title);
 
     // if (event.key === 'Enter') {
     //   setTodos([
@@ -39,12 +40,10 @@ import './App.css';
 
     // }
 
-    setTodos([
-      ...todos,
-      {id: Date.now(), title: title, completed: false}
-    ])
+    setTodos((todos) => [...todos, {id: Date.now(), title: title, completed: false}])
 
-  }
+  }, []);
+      
 
   const removeTodo = (id) => {
     const refreshTodos = todos.filter(todo => todo.id !== id);
@@ -77,7 +76,8 @@ import './App.css';
         <TodoInput 
           // todoTitle={todoTitle} 
           // setTodoTitle={setTodoTitle}
-          addTodo={addTodo} />
+          addTodo={addTodo} 
+          />
 
         {/* <div className={`input-field ${cls}`}>
           <input 

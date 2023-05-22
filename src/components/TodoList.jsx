@@ -2,6 +2,8 @@ import TodoItem from './TodoItem';
 
 export default function TodoList({todos, removeTodo, toggleTodo, editTodo}) {
 
+    console.log('render TodoList');
+    
     return (
         <ul className='todo-list'>
             {todos.length <= 0 && (

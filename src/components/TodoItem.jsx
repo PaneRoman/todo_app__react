@@ -3,6 +3,7 @@ import { useLayoutEffect, useRef, useState } from "react";
 export default function TodoItem({title, id, completed, removeTodo, toggleTodo, editTodo}) {
 
     // console.log('completed >>>', completed);
+    console.log('id >>>', id);
 
     const [isEdit, setIsEdit] = useState(false);
     const [inputValue, setinputValue] = useState(title)
@@ -77,7 +78,14 @@ export default function TodoItem({title, id, completed, removeTodo, toggleTodo, 
                             }}>
                         </button>
                     ) : (
-                        <button className="del-button" onClick={removeTodo}></button>
+                        <button 
+                            className="del-button" 
+                            onClick={() => {
+                                if (window.confirm('Are you sure?')) {
+                                    removeTodo()
+                                }
+                            }}>
+                        </button>
                     )}
                 </div>
                 
